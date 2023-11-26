@@ -48,7 +48,7 @@ const int CADENCE_MAX = 45; // cadence value that will result in full throttle
 const float THROTTLE_OFF = 0.0;
 const float THROTTLE_DUTY_MIN = 0.05;
 const float THROTTLE_DUTY_MID = 0.5;
-const float THROTTLE_DUTY_MAX = 1.0;
+const float THROTTLE_DUTY_MAX = 0.8;
 
 const int PAS_TIMEOUT = 400; // ms to stop power after pedal stopped
 #define FILTER_SAMPLES 5
@@ -127,9 +127,9 @@ static THD_FUNCTION(my_thread, arg) {
         cadence = calculateCadence(elapsed_time, 12);
         throttleDuty = calculateThrottleDuty(targetDuty, cadence);
 
-        commands_printf("PAS CHANGED pas_input := %d elapsed time: %d cadence: "
-                        "%f throttleDuty : %f",
-                        pas_input, elapsed_time, cadence, throttleDuty);
+        /* commands_printf("PAS CHANGED pas_input := %d elapsed time: %d cadence: " */
+        /*                 "%f throttleDuty : %f", */
+        /*                 pas_input, elapsed_time, cadence, throttleDuty); */
       }
     };
     pas_previous = pas_input;
